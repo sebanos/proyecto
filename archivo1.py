@@ -156,4 +156,59 @@ def delete_user(user_id):
     conn.close()
 
 
+def menu():
+    while True:
+        print("\n📌 Menú de Usuarios")
+        print("1. Crear un nuevo usuario")
+        print("2. Mostrar todos los usuarios")
+        print("3. Actualizar solo teléfono")
+        print("4. Actualizar solo email")
+        print("5. Actualizar todos los datos excepto ID y nombre")
+        print("6. Eliminar usuario")
+        print("7. Salir")
 
+        opcion = input("Selecciona una opción: ")
+
+        if opcion == "1":
+            nombre = input("Nombre: ")
+            telefono = input("Teléfono: ")
+            email = input("Email: ")
+            ciudad = input("Ciudad: ")
+            direccion = input("Dirección: ")
+            create_user(nombre, telefono, email, ciudad, direccion)
+
+        elif opcion == "2":
+            read_users()
+
+        elif opcion == "3":
+            user_id = input("ID del usuario: ")
+            new_phone = input("Nuevo teléfono: ")
+            update_phone(user_id, new_phone)
+
+        elif opcion == "4":
+            user_id = input("ID del usuario: ")
+            new_email = input("Nuevo email: ")
+            update_email(user_id, new_email)
+
+        elif opcion == "5":
+            user_id = input("ID del usuario: ")
+            new_phone = input("Nuevo teléfono: ")
+            new_email = input("Nuevo email: ")
+            new_city = input("Nueva ciudad: ")
+            new_address = input("Nueva dirección: ")
+            update_full(user_id, new_phone, new_email, new_city, new_address)
+
+        elif opcion == "6":
+            user_id = input("ID del usuario a eliminar: ")
+            delete_user(user_id)
+
+        elif opcion == "7":
+            print("Saliendo del programa...")
+            break
+
+        else:
+            print("⚠️ Opción no válida. Inténtalo de nuevo.")
+
+
+if __name__ == "__main__":
+    menu()
